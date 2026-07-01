@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diablo IV Activity Gallery</title>
+
+<style>
+:root{
+    --bg:#0b0a0a;
+    --panel:#141111;
+    --panel-hover:#1f1818;
+    --accent:#8b1e1e;
+    --accent-glow:#b62828;
+    --text:#d6d0c7;
+    --muted:#8f867d;
+    --border:#342525;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI, Arial, sans-serif;
+
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(139,30,30,.15),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            ellipse at bottom,
+            rgba(139,30,30,.25),
+            transparent 55%
+        ),
+
+        linear-gradient(
+            #0b0a0a,
+            #121010
+        );
+
+    color:var(--text);
+}
+
+.container{
+    width:100%;
+    max-width:none;
+    margin:0 auto;
+    padding:40px;
+    
+    flex:1;
+}
+
+.header{
+    margin-bottom:30px;
+}
+
+.header h1{
+    font-size:2rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#d7c2a1;
+    text-shadow:
+        0 0 8px rgba(182,40,40,.6);
+}
+
+.header p{
+    margin-top:8px;
+    color:var(--muted);
+}
+
+.footer{
+    text-align:center;
+    margin-top:auto;
+    margin-bottom:20px;
+    padding:20px 0 10px;
+    
+    
+    color:rgba(214,208,199,.55);
+    font-size:.85rem;
+    letter-spacing:1px;
+
+    border-top:1px solid rgba(139,30,30,.15);
+
+    text-shadow:
+        0 0 8px rgba(139,30,30,.15);
+}
+
+.gallery-wrapper{
+    position:relative;
+}
+
+.gallery{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-behavior:smooth;
+    padding:10px 5px 20px;
+    
+    scrollbar-width:thin;
+    scrollbar-color:var(--accent) #111;
+}
+
+.gallery::-webkit-scrollbar{
+    height:10px;
+}
+
+.gallery::-webkit-scrollbar-track{
+    background:#111;
+    border-radius:10px;
+}
+
+.gallery::-webkit-scrollbar-thumb{
+    background:var(--accent);
+    border-radius:10px;
+}
+
+.card{
+    min-width:580px;
+    /* width:580px; */
+
+    display:flex;
+    flex-direction:column;
+
+    /* min-height:760px; /* adjust if needed */
+
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:var(--accent-glow);
+
+    box-shadow:
+        0 0 25px rgba(182,40,40,.3);
+}
+
+.image-container{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    flex:1;
+    background:#090909;
+}
+
+.image-container img{
+    width:580px;      /* target width */
+    height:auto;      /* preserve original aspect ratio */
+    display:block;
+}
+
+.caption{
+    margin-top:auto;
+    padding:14px 16px;
+}
+
+.caption h3{
+    color:#d7c2a1;
+    margin-bottom:5px;
+    font-size:1rem;
+}
+
+.caption span{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.fade-left,
+.fade-right{
+    position:absolute;
+    top:0;
+    width:90px;
+    height:100%;
+    pointer-events:none;
+    z-index:2;
+
+    opacity:1;
+    transition:opacity .25s ease;
+}
+
+.fade-left{
+    left:0;
+    background:linear-gradient(
+        to right,
+        rgba(11,10,10,.95),
+        transparent
+    );
+}
+
+.fade-right{
+    right:0;
+    background:linear-gradient(
+        to left,
+        rgba(11,10,10,.95),
+        transparent
+    );
+}
+
+.instructions{
+    margin-top:15px;
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .card{
+        min-width:90%;
+    }
+
+    .image-container img{
+        height:250px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Diablo IV Activity Trees</h1>
+        <p>Season 14</p>
+    </div>
+
+    <div class="gallery-wrapper">
+
+        <div class="fade-left"></div>
+        <div class="fade-right"></div>
+
+        <div class="gallery">
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="Helltide - Tree.png" alt="Helltide">
+                </div>
+                <div class="caption">
+                    <h3>Helltide</h3>
+                    <span>Activity Tree</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="Infernal Hordes - Tree.png" alt="Infernal Hordes">
+                </div>
+                <div class="caption">
+                    <h3>Infernal Hordes</h3>
+                    <span>Activity Tree</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="Lair Bosses - Tree.png" alt="Lair Bosses">
+                </div>
+                <div class="caption">
+                    <h3>Lair Bosses</h3>
+                    <span>Activity Tree</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="Nightmare Dungeons - Tree.png" alt="Nightmare Dungeons">
+                </div>
+                <div class="caption">
+                    <h3>Nightmare Dungeons</h3>
+                    <span>Activity Tree</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="The Pit - Tree.png" alt="The Pit">
+                </div>
+                <div class="caption">
+                    <h3>The Pit</h3>
+                    <span>Activity Tree</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="The Undercity - Tree.png" alt="The Undercity">
+                </div>
+                <div class="caption">
+                    <h3>The Undercity</h3>
+                    <span>Activity Tree</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="Tree of Whispers - Tree.png" alt="Tree of Whispers">
+                </div>
+                <div class="caption">
+                    <h3>Tree of Whispers</h3>
+                    <span>Activity Tree</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="instructions">
+        Use Mouse wheel to scroll...
+    </div>
+
+</div>
+
+<script>
+const gallery = document.querySelector('.gallery');
+const fadeLeft = document.querySelector('.fade-left');
+const fadeRight = document.querySelector('.fade-right');
+
+function updateFades() {
+
+    const scrollLeft = gallery.scrollLeft;
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+
+    // Hide left fade when fully left
+    fadeLeft.style.opacity =
+        scrollLeft <= 5 ? "0" : "1";
+
+    // Hide right fade when fully right
+    fadeRight.style.opacity =
+        scrollLeft >= maxScroll - 5 ? "0" : "1";
+}
+
+gallery.addEventListener('wheel', (e) => {
+    e.preventDefault();
+
+    // Increase scroll speed (adjust multiplier)
+    gallery.scrollLeft += e.deltaY * 3;
+});
+
+gallery.addEventListener('scroll', updateFades);
+
+window.addEventListener('load', updateFades);
+window.addEventListener('resize', updateFades);
+</script>
+<footer class="footer">
+    © 2026 KnightViper. All rights reserved.
+</footer>
+</body>
+</html>
