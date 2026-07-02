@@ -31,22 +31,9 @@ body{
     min-height:100vh;
 
     background:
-        radial-gradient(
-            circle at top,
-            rgba(139,30,30,.15),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            ellipse at bottom,
-            rgba(139,30,30,.25),
-            transparent 55%
-        ),
-
-        linear-gradient(
-            #0b0a0a,
-            #121010
-        );
+        radial-gradient(circle at top, rgba(139,30,30,.15), transparent 35%),
+        radial-gradient(ellipse at bottom, rgba(139,30,30,.25), transparent 55%),
+        linear-gradient(#0b0a0a, #121010);
 
     color:var(--text);
 }
@@ -56,8 +43,10 @@ body{
     max-width:none;
     margin:0 auto;
     padding:40px;
-    
+
     flex:1;
+    display:flex;
+    flex-direction:column;
 }
 
 .header{
@@ -69,8 +58,7 @@ body{
     letter-spacing:2px;
     text-transform:uppercase;
     color:#d7c2a1;
-    text-shadow:
-        0 0 8px rgba(182,40,40,.6);
+    text-shadow:0 0 8px rgba(182,40,40,.6);
 }
 
 .header p{
@@ -78,21 +66,20 @@ body{
     color:var(--muted);
 }
 
+/* FOOTER */
 .footer{
     text-align:center;
     margin-top:auto;
-    margin-bottom:20px;
-    padding:20px 0 10px;
-    
-    
+    margin-bottom:1px;
+
     color:rgba(214,208,199,.55);
     font-size:.85rem;
     letter-spacing:1px;
 
     border-top:1px solid rgba(139,30,30,.15);
+    padding-top:16px;
 
-    text-shadow:
-        0 0 8px rgba(139,30,30,.15);
+    text-shadow:0 0 8px rgba(139,30,30,.15);
 }
 
 .gallery-wrapper{
@@ -106,7 +93,7 @@ body{
     overflow-y:hidden;
     scroll-behavior:smooth;
     padding:10px 5px 20px;
-    
+
     scrollbar-width:thin;
     scrollbar-color:var(--accent) #111;
 }
@@ -127,30 +114,25 @@ body{
 
 .card{
     min-width:580px;
-    /* width:580px; */
 
     display:flex;
     flex-direction:column;
 
-    /* min-height:760px; /* adjust if needed */
-
-    background:var(--panel);
+    background:linear-gradient(180deg, #141111, #0f0c0c);
     border:1px solid var(--border);
     border-radius:10px;
     overflow:hidden;
 
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        border-color .25s ease;
+    transition:transform .25s ease,
+               box-shadow .25s ease,
+               border-color .25s ease;
 }
 
 .card:hover{
     transform:translateY(-4px);
     border-color:var(--accent-glow);
 
-    box-shadow:
-        0 0 25px rgba(182,40,40,.3);
+    box-shadow:0 0 25px rgba(182,40,40,.3);
 }
 
 .image-container{
@@ -162,8 +144,8 @@ body{
 }
 
 .image-container img{
-    width:580px;      /* target width */
-    height:auto;      /* preserve original aspect ratio */
+    width:580px;
+    height:auto;
     display:block;
 }
 
@@ -183,6 +165,7 @@ body{
     font-size:.9rem;
 }
 
+/* FADES */
 .fade-left,
 .fade-right{
     position:absolute;
@@ -193,27 +176,20 @@ body{
     z-index:2;
 
     opacity:1;
-    transition:opacity .25s ease;
+    transition:opacity .2s ease;
 }
 
 .fade-left{
     left:0;
-    background:linear-gradient(
-        to right,
-        rgba(11,10,10,.95),
-        transparent
-    );
+    background:linear-gradient(to right, rgba(11,10,10,.95), transparent);
 }
 
 .fade-right{
     right:0;
-    background:linear-gradient(
-        to left,
-        rgba(11,10,10,.95),
-        transparent
-    );
+    background:linear-gradient(to left, rgba(11,10,10,.95), transparent);
 }
 
+/* INFO TEXT */
 .instructions{
     margin-top:15px;
     color:var(--muted);
@@ -221,13 +197,8 @@ body{
 }
 
 @media(max-width:700px){
-
     .card{
         min-width:90%;
-    }
-
-    .image-container img{
-        height:250px;
     }
 }
 </style>
@@ -326,6 +297,10 @@ body{
         Use Mouse wheel to scroll...
     </div>
 
+    <div class="footer">
+        © 2026 KnightViper. All rights reserved.
+    </div>
+
 </div>
 
 <script>
@@ -333,34 +308,23 @@ const gallery = document.querySelector('.gallery');
 const fadeLeft = document.querySelector('.fade-left');
 const fadeRight = document.querySelector('.fade-right');
 
-function updateFades() {
-
+function updateFades(){
     const scrollLeft = gallery.scrollLeft;
     const maxScroll = gallery.scrollWidth - gallery.clientWidth;
 
-    // Hide left fade when fully left
-    fadeLeft.style.opacity =
-        scrollLeft <= 5 ? "0" : "1";
-
-    // Hide right fade when fully right
-    fadeRight.style.opacity =
-        scrollLeft >= maxScroll - 5 ? "0" : "1";
+    fadeLeft.style.opacity = scrollLeft <= 5 ? "0" : "1";
+    fadeRight.style.opacity = scrollLeft >= maxScroll - 5 ? "0" : "1";
 }
 
 gallery.addEventListener('wheel', (e) => {
     e.preventDefault();
-
-    // Increase scroll speed (adjust multiplier)
-    gallery.scrollLeft += e.deltaY * 3;
-});
+    gallery.scrollLeft += e.deltaY * 4;
+}, { passive:false });
 
 gallery.addEventListener('scroll', updateFades);
-
 window.addEventListener('load', updateFades);
 window.addEventListener('resize', updateFades);
 </script>
-<footer class="footer">
-    © 2026 KnightViper. All rights reserved.
-</footer>
+
 </body>
 </html>
