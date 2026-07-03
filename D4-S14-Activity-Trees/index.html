@@ -322,6 +322,93 @@ body{
     box-shadow:
         0 0 14px rgba(182,40,40,.25);
 }
+.guide-panel{
+    margin-top:35px;
+    width: 1200px;
+    
+    padding:24px;
+
+    background:linear-gradient(
+        180deg,
+        rgba(20,17,17,.95),
+        rgba(10,8,8,.95)
+    );
+
+    border:1px solid rgba(139,30,30,.35);
+    border-radius:12px;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(139,30,30,.15),
+        0 0 25px rgba(182,40,40,.08);
+}
+
+.guide-panel h2{
+    margin-bottom:18px;
+
+    color:#d7c2a1;
+
+    text-transform:uppercase;
+    letter-spacing:1px;
+
+    text-shadow:0 0 10px rgba(182,40,40,.35);
+}
+
+.guide-list{
+    padding-left:24px;
+}
+
+.guide-list li{
+    margin-bottom:14px;
+
+    color:var(--text);
+    line-height:1.6;
+}
+
+.guide-list li::marker{
+    color:#b62828;
+}
+
+.guide-list strong{
+    color:#d7c2a1;
+}
+
+.guide-list em{
+    color:#c18a8a;
+    font-style:italic;
+}
+.copy-filter{
+    display:inline-block;
+    margin-top:8px;
+    padding:8px 14px;
+
+    background:linear-gradient(180deg,#2a1515,#1a0f0f);
+    border:1px solid rgba(182,40,40,.5);
+    border-radius:6px;
+
+    color:#d7c2a1;
+    font-size:.9rem;
+    text-decoration:none;
+    cursor:pointer;
+
+    transition:
+        transform .15s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.copy-filter:hover{
+    transform:translateY(-2px);
+    border-color:#b62828;
+
+    box-shadow:
+        0 0 15px rgba(182,40,40,.25);
+}
+
+#copyMessage{
+    margin-left:10px;
+    color:#7ed957;
+    font-size:.9rem;
+}
 </style>
 </head>
 
@@ -443,6 +530,95 @@ body{
         <button id="tabBtn" class="toggle-btn">Tab View</button>
     </div>
     
+    <div class="guide-panel">
+    <h2>Torment Progression Guide</h2>
+    <ul class="guide-list">
+        <li>
+            <strong>Don't do this Mistake!</strong> Avoid rushing into Torment 1 at level 70.
+            Instead, farm Helltides in <em>Penitent</em> difficulty using the
+            <em>Wraith and Rot</em> node to secure <strong>40–50 Paragon</strong> points and unlock your
+            first <strong>Legendary Node</strong> for a big damage boost.
+        </li>
+        <li>
+            <strong>First Steps in Torment 1:</strong>
+            Prioritize shopping at vendors for <strong>850 item power gear</strong>
+            and buying aspect caches. Use the Horadric Cube to upgrade <strong style="color:yellow;">rare</strong>
+            items to <strong style="color:orange;bold">legendary</strong> and continue farming Helltides to reach
+            <strong>60–80 Paragon</strong> points.
+        </li>
+        <li>
+            <strong>Torment 2 & Lair Boss:</strong>
+            Only tackle Lair Bosses after reaching Torment 2 or 3.
+            Focus on seasonal reputation and securing your first
+            signature unique items.
+        </li>
+        <li>
+            <strong>Torment 4 & Gems:</strong>
+            Farm the <em>Sears Reach</em> dungeon to collect
+            <strong>Grand Gems</strong> and set charms efficiently.
+            Using markers for resets speeds this up dramatically.
+        </li>
+        <li>
+            <strong>Torment 5–8 War Plans:</strong>
+            Progress through the <em>War Table</em> activities,
+            focusing on <strong>Greater Helltide Harvests</strong>.
+            Farm Nightmare Dungeon Escalations for gold and materials.
+        </li>
+        <li>
+            <strong>Defense:</strong>
+            Use the <strong>Rahier</strong> mercenary with
+            <em>Bastion</em> for damage reduction and barrier support.
+            Prioritize armor, resistances, and maximum life.
+        </li>
+        <li>
+            <strong>Gear Progression:</strong>
+            Keep strong 850 item power items with ideal stats
+            until ancestral upgrades appear. Reroll jewelry
+            for critical multipliers.
+        </li>
+        <li>
+            <strong>Torment Jumping:</strong>
+            Only move into higher Torment tiers when your
+            <em>War Plan</em> directs you through the Pit.
+        </li>
+        <li>
+            <strong>Torment 10–12:</strong>
+            Rebuild Paragon boards to activate all five glyphs
+            and push them toward legendary status.
+        </li>
+        <li>
+            <strong>Loot Filter:</strong>
+            Use a loot filter from <strong style="color:orange;bold">Torment 6</strong> onward to hide
+            non-ancestral clutter while keeping <strong style="color:yellow;">rare talismans.</strong><br>
+
+            <span class="copy-filter"
+                  onclick="copyLootFilter()">
+                Copy Suggested Loot Filter for Import
+            </span>
+
+            <span id="copyMessage"></span>
+        </li>
+        <li>
+            <strong>Seasonal Blessing:</strong>
+            Prioritize <em>Urn of Death Awakening</em>,
+            then reclamation and glyph upgrades.
+        </li>
+        <li>
+            <strong>Upgrade to Mythic:</strong>
+            Save <strong>Superior Lair Boss Keys</strong>
+            for higher-tier encounters instead of fragments.
+            Farm <em>Realm Walker</em> events during Helltides.
+        </li>
+        <li>
+            <strong>More Defense!</strong>
+            Utilize runes, especially
+            <strong>Earth Bulwark</strong>,
+            for constant barrier uptime.
+        </li>
+    </ul>
+
+</div>
+    
     <div class="footer">
         © 2026 KnightViper. All rights reserved.
     </div>
@@ -523,6 +699,22 @@ tabs.forEach(tab => {
         tabImage.src = tab.dataset.img;
     });
 });
+
+/* copy loot filter */
+function copyLootFilter(){
+
+    const filterString = "Ch4KDUNvZGV4IFVwZ3JhZGUQAh3oIt//IgQIAzABKAEKMAoRUmFyZSBDaGFybXMvU2VhbHMQAB0AAP//IgwIBRUF7SIAFYB+IwAiBAgBIEQoAQomCg1HcmVhdGVyIEFmZml4EAIdAAD//yIGCAQgATABIgQIASAGKAEKIgoRQ29tbW9uL01hZ2ljL1JhcmUQAx0AAP//IgQIASAHKAESDEJhc2ljIEx2bCA3MBgCIAI=";
+
+    navigator.clipboard.writeText(filterString);
+
+    const msg = document.getElementById("copyMessage");
+
+    msg.textContent = "Copied!";
+
+    setTimeout(() => {
+        msg.textContent = "";
+    },2000);
+}
 </script>
 
 </body>
