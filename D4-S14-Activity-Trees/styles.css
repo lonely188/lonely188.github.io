@@ -127,6 +127,13 @@ body{
     box-shadow:0 0 25px rgba(182,40,40,.3);
 }
 
+.card-icon{
+    width:32px;
+    height:32px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
 .image-container{
     display:flex;
     justify-content:center;
@@ -147,6 +154,10 @@ body{
 }
 
 .caption h3{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    
     color:#d7c2a1;
     margin-bottom:5px;
     font-size:1rem;
@@ -276,6 +287,10 @@ body{
 }
 
 .tab{
+    display:flex;
+    align-items:center;
+    gap:4px; 
+    
     background:#141111;
     border:1px solid rgba(52,37,37,.9);
 
@@ -288,6 +303,13 @@ body{
     margin-left:-1px;
 
     transition:all .15s ease;
+}
+
+.tab-icon{
+    width:32px;
+    height:32px;
+    object-fit:contain;
+    flex-shrink:0;
 }
 
 .tab:first-child{
