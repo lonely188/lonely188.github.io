@@ -30,6 +30,22 @@ body{
     color:var(--text);
 }
 
+a{
+    color:#d7c2a1;
+    text-decoration:none;
+    transition:
+        color .2s ease,
+        text-shadow .2s ease,
+        border-color .2s ease;
+
+    border-bottom:1px solid transparent;
+}
+
+a:hover{
+    color:#c18a8a;
+    border-bottom:1px solid rgba(182,40,40,.7);
+}
+
 .container{
     width:100%;
     max-width:none;
